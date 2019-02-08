@@ -732,15 +732,15 @@ public class VersionRangeTest
         throws InvalidVersionSpecificationException
     {
         VersionRange range = VersionRange.createFromVersionSpec( "[1.0,1.2]" );
-        assertTrue( range == VersionRange.createFromVersionSpec( "[1.0,1.2]" ) ); // same instance from spec cache
+        assertSame( range, VersionRange.createFromVersionSpec( "[1.0,1.2]" ) ); // same instance from spec cache
 
         VersionRange spec = VersionRange.createFromVersionSpec( "1.0" );
-        assertTrue( spec == VersionRange.createFromVersionSpec( "1.0" ) ); // same instance from spec cache
+        assertSame( spec, VersionRange.createFromVersionSpec( "1.0" ) ); // same instance from spec cache
         List<Restriction> restrictions = spec.getRestrictions();
         assertEquals( CHECK_NUM_RESTRICTIONS, 1, restrictions.size() );
 
         VersionRange version = VersionRange.createFromVersion( "1.0" );
-        assertTrue( version == VersionRange.createFromVersion( "1.0" ) ); // same instance from version cache
+        assertSame( version, VersionRange.createFromVersion( "1.0" ) ); // same instance from version cache
         restrictions = version.getRestrictions();
         assertEquals( CHECK_NUM_RESTRICTIONS, 0, restrictions.size() );
 
